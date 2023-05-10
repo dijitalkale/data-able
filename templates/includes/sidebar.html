@@ -11,134 +11,474 @@
       </a>
       <a class="mobile-menu" id="mobile-collapse" href="javascript:"><span></span></a>
     </div>
-    <div class="navbar-content scroll-div">
-      <ul class="nav pcoded-inner-navbar">
+
+    <div class="navbar-content scroll-div active pcoded-trigger ps ps--active-y">
+      <ul class="nav pcoded-inner-navbar " style="display: block;">
         <li class="nav-item pcoded-menu-caption">
           <label>Navigation</label>
         </li>
-        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item {% if 'index' in segment %}active{% endif %}">
-          {% if request.user.is_superuser %}
-          <a href="{% url 'admin:index' %}" class="nav-link ">
-          {% else %}
-          <a href="{% url 'index' %}" class="nav-link ">
-          {% endif %}
-            <span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Dashboard</span>
-          </a>
-        </li>
-
-        {% if not request.user.is_authenticated %}
-        <li
-          data-username="Authentication Sign up Sign in reset password Change password Personal information profile settings map form subscribe"
-          class="nav-item pcoded-hasmenu">
-          <a href="javascript:" class="nav-link "><span class="pcoded-micon"><i
-                class="feather icon-lock"></i></span><span class="pcoded-mtext">Authentication</span></a>
-          <ul class="pcoded-submenu">
-            <li class=""><a href="{% url 'login' %}" class="">Sign IN</a></li>
-            <li class=""><a href="{% url 'register' %}" class="">Sign UP</a></li>
+        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project"
+          class="nav-item pcoded-hasmenu active pcoded-trigger">
+          <a href="#" class="nav-link"><span class="pcoded-micon"><i class="feather icon-home"></i></span><span
+              class="pcoded-mtext">Dashboard</span></a>
+          <ul class="pcoded-submenu" style="display: block;">
+            <li class="active"><a href="/">Default</a></li>
+            <li><a href="/dashboard/ecommerce/">Ecommerce</a></li>
+            <li><a href="/dashboard/crm/">CRM</a></li>
+            <li><a href="/dashboard/analytics/">Analytics</a></li>
+            <li><a href="/dashboard/crypto/">Crypto<span class="pcoded-badge label label-danger">NEW</span></a></li>
+            <li><a href="/dashboard/project/">Project</a></li>
           </ul>
         </li>
-        {% endif %}
-
-        {% admin_get_menu as app_list %}
-        {% if app_list %}
-          {% for app in app_list %}
-            {% if app.has_perms and not app.pinned %}
-              <li 
-                data-username="basic components Button Alert Badges breadcrumb Paggination progress Tooltip popovers Carousel Cards Collapse Tabs pills Modal Grid System Typography Extra Shadows Embeds"
-                class="nav-item pcoded-hasmenu"
-              >
-                <a href="javascript:" class="nav-link ">
-                  <span class="pcoded-micon"><i class=" {% if app.icon %}{{ app.icon }} {% else %} feather icon-box {% endif %}"></i></span>
-                  <span class="pcoded-mtext">{{ app.label|slice:10 }}{% if app.label|length > 10 %}..{% endif %}</span>
-                </a>
-                {% if app.models %}
-                  <ul class="pcoded-submenu">
-                    {% for model in app.models %}
-                      {% if model.url %}
-                        <li class="nav-item {% if 'bootstrap-tables' in segment or model.url in request.path|urlencode %} active {% endif %}">
-                          <a class="nav-link" href="{{ model.url }}">{{ model.label }}</a>
-                        </li>
-                      {% else %}
-                        <li class="nav-item">{{ model.label }}</li>
-                      {% endif %}
-                    {% endfor %}
-                  </ul>
-                {% endif %}
-              </li>
-            {% endif %}
-          {% endfor %}
-        {% endif %}
-
-        {% if request.user.is_authenticated and not request.user.is_superuser %}
+        <li data-username="Vertical Horizontal Box Layout RTL fixed static Collapse menu color icon dark"
+          class="nav-item pcoded-hasmenu">
+          <a href="#" class="nav-link"><span class="pcoded-micon"><i class="feather icon-layout"></i></span><span
+              class="pcoded-mtext">Page layouts</span></a>
+          <ul class="pcoded-submenu" style="display: none;">
+            <li class="pcoded-hasmenu"><a href="#">Vertical</a>
+              <ul class="pcoded-submenu" style="display: none;">
+                <li><a href="/page-layouts/vertical/static-layout/">Static</a></li>
+                <li><a href="/page-layouts/vertical/fixed-layout/">Fixed</a></li>
+                <li><a href="/page-layouts/vertical/navbar-fixed-layout/">Navbar fixed</a></li>
+                <li><a href="/page-layouts/vertical/collapse-layout/">Collapse menu</a></li>
+              </ul>
+            </li>
+            <li><a href="/page-layouts/horizontal-layout/">Horizontal</a></li>
+            <li><a href="/page-layouts/box-layout/">Box layout</a></li>
+            <li><a href="/page-layouts/rtl-layout/">RTL</a></li>
+            <li><a href="/page-layouts/light-layout/">Light layout</a></li>
+            <li><a href="/page-layouts/dark-layout/">Dark layout <span
+                  class="pcoded-badge label label-danger">Hot</span></a></li>
+            <li><a href="/page-layouts/color-icon-layout/">Color icon</a></li>
+          </ul>
+        </li>
+        <li data-username="widget Statistic Data Table User card Chart" class="nav-item pcoded-hasmenu">
+          <a href="#" class="nav-link"><span class="pcoded-micon"><i class="feather icon-layers"></i></span><span
+              class="pcoded-mtext">Widget</span></a>
+          <ul class="pcoded-submenu" style="display: none;">
+            <li><a href="/widget/statistic/">Statistic</a></li>
+            <li><a href="/widget/data/">Data</a></li>
+            <li><a href="/widget/table/">Table</a></li>
+            <li><a href="/widget/user-card/">User</a></li>
+            <li><a href="/widget/chart/">Chart</a></li>
+          </ul>
+        </li>
+        <li data-username="widget Statistic Data Table User card Chart" class="nav-item pcoded-hasmenu">
+          <a href="#" class="nav-link"><span class="pcoded-micon"><i class="feather icon-users"></i></span><span
+              class="pcoded-mtext">User</span><span class="pcoded-badge label label-primary">New</span></a>
+          <ul class="pcoded-submenu" style="display: none;">
+            <li><a href="/user/profile/">Profile</a></li>
+            <li><a href="/user/social-profile/">Social Profile</a></li>
+            <li><a href="/user/user-card/">User Card</a></li>
+            <li><a href="/user/user-list/">User List</a></li>
+          </ul>
+        </li>
         <li class="nav-item pcoded-menu-caption">
           <label>UI Element</label>
         </li>
         <li
           data-username="basic components Button Alert Badges breadcrumb Paggination progress Tooltip popovers Carousel Cards Collapse Tabs pills Modal Grid System Typography Extra Shadows Embeds"
-          class="nav-item pcoded-hasmenu {% if 'basic_components' in parent %}active pcoded-trigger{% endif %}">
-          <a href="javascript:" class="nav-link "><span class="pcoded-micon"><i
-                class="feather icon-box"></i></span><span class="pcoded-mtext">Components</span></a>
-          <ul class="pcoded-submenu">
-            <li class="{% if 'button' in segment %}active{% endif %}"><a href="{% url 'bc_button' %}" class="">Button</a></li>
-            <li class="{% if 'badges' in segment %}active{% endif %}"><a href="{% url 'bc_badges' %}" class="">Badges</a></li>
-            <li class="{% if 'breadcrumbs_&_pagination' in segment %}active{% endif %}"><a href="{% url 'bc_breadcrumb_pagination' %}" class="">Breadcrumb & paggination</a></li>
-            <li class="{% if 'collapse' in segment %}active{% endif %}"><a href="{% url 'bc_collapse' %}" class="">Collapse</a></li>
-            <li class="{% if 'navs_&_tabs' in segment %}active{% endif %}"><a href="{% url 'bc_tabs' %}" class="">Tabs & pills</a></li>
-            <li class="{% if 'typography' in segment %}active{% endif %}"><a href="{% url 'bc_typography' %}" class="">Typography</a></li>
-
-
-            <li class="{% if 'feather_icon' in segment %}active{% endif %}"><a href="{% url 'icon_feather' %}" class="">Feather<span
-                  class="pcoded-badge label label-danger">NEW</span></a></li>
+          class="nav-item pcoded-hasmenu">
+          <a href="#" class="nav-link"><span class="pcoded-micon"><i class="feather icon-box"></i></span><span
+              class="pcoded-mtext">Basic</span></a>
+          <ul class="pcoded-submenu" style="display: none;">
+            <li><a href="/elements/basic/alert/">Alert</a></li>
+            <li><a href="/elements/basic/button/">Button</a></li>
+            <li><a href="/elements/basic/badges/">Badges</a></li>
+            <li><a href="/elements/basic/breadcrumb-pagination/">Breadcrumb &amp; paggination</a></li>
+            <li><a href="/elements/basic/cards/">Cards</a></li>
+            <li><a href="/elements/basic/collapse/">Collapse</a></li>
+            <li><a href="/elements/basic/carousel/">Carousel</a></li>
+            <li><a href="/elements/basic/grid-system/">Grid system</a></li>
+            <li><a href="/elements/basic/progress/">Progress</a></li>
+            <li><a href="/elements/basic/modal/">Modal</a></li>
+            <li><a href="/elements/basic/spinner/">Spinner<span class="pcoded-badge label label-danger">NEW</span></a>
+            </li>
+            <li><a href="/elements/basic/navs-tabs/">Tabs &amp; pills</a></li>
+            <li><a href="/elements/basic/typography/">Typography</a></li>
+            <li><a href="/elements/basic/tooltips-popover/">Tooltip &amp; popovers</a></li>
+            <li><a href="/elements/basic/toasts/">Toasts<span class="pcoded-badge label label-danger">NEW</span></a>
+            </li>
+            <li><a href="/elements/basic/extra/">Other<span class="pcoded-badge label label-primary">NEW</span></a>
+            </li>
+          </ul>
+        </li>
+        <li
+          data-username="advance components Alert gridstack lightbox modal notification pnotify rating rangeslider slider syntax highlighter Tour Tree view Nestable Toolbar"
+          class="nav-item pcoded-hasmenu">
+          <a href="#" class="nav-link"><span class="pcoded-micon"><i class="feather icon-gitlab"></i></span><span
+              class="pcoded-mtext">Advance</span></a>
+          <ul class="pcoded-submenu" style="display: none;">
+            <li><a href="/elements/advance/alert/">Sweet alert</a></li>
+            <li><a href="/elements/advance/datepicker/">Datepicker</a></li>
+            <li><a href="/elements/advance/lightbox/">Lightbox</a></li>
+            <li><a href="/elements/advance/modal/">Modal</a></li>
+            <li><a href="/elements/advance/notification/">Notification</a></li>
+            <!-- <li><a href="../element/ac_nestable.html">Nestable</a></li> -->
+            <li><a href="/elements/advance/pnotify/">Pnotify</a></li>
+            <!-- <li><a href="../element/ac_rating.html">Rating</a></li> -->
+            <li><a href="/elements/advance/range-slider/">Rangeslider</a></li>
+            <li><a href="/elements/advance/slider/">Slider</a></li>
+            <li><a href="/elements/advance/syntax-highlighter/">Syntax highlighter</a></li>
+            <li><a href="/elements/advance/tour/">Tour</a></li>
+            <li><a href="/elements/advance/treeview/">Tree view</a></li>
+          </ul>
+        </li>
+        <li data-username="Animations" class="nav-item"><a href="/elements/animation/" class="nav-link"><span
+              class="pcoded-micon"><i class="feather icon-aperture"></i></span><span
+              class="pcoded-mtext">Animations</span></a></li>
+        <li data-username="icons Feather Fontawsome flag material simple line themify" class="nav-item pcoded-hasmenu">
+          <a href="#" class="nav-link"><span class="pcoded-micon"><i class="feather icon-feather"></i></span><span
+              class="pcoded-mtext">Icons</span></a>
+          <ul class="pcoded-submenu" style="display: none;">
+            <li><a href="/icons/feather-icon/">Feather<span class="pcoded-badge label label-danger">NEW</span></a></li>
+            <li><a href="/icons/font-awesome/">Font Awesome 5<span
+                  class="pcoded-badge label label-primary">1000+</span></a></li>
+            <li><a href="/icons/flag-icon/">Flag</a></li>
+            <li><a href="/icons/material-icon/">Material</a></li>
+            <li><a href="/icons/simple-line/">Simple line</a></li>
+            <li><a href="/icons/themify-icon/">Themify</a></li>
           </ul>
         </li>
         <li class="nav-item pcoded-menu-caption">
-          <label>Forms & table</label>
+          <label>Forms</label>
         </li>
-        <li data-username="form elements advance componant validation masking wizard picker select" class="nav-item {% if 'form_elements' in segment %}active{% endif %}">
-          <a href="{% url 'form_elements' %}" class="nav-link "><span class="pcoded-micon"><i
-                class="feather icon-file-text"></i></span><span class="pcoded-mtext">Form elements</span></a>
+        <li data-username="form elements advance component validation masking wizard picker select"
+          class="nav-item pcoded-hasmenu">
+          <a href="#" class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span
+              class="pcoded-mtext">Forms</span></a>
+          <ul class="pcoded-submenu" style="display: none;">
+            <li class=""><a href="/forms/form-basic/" class="">Form Basic</a></li>
+            <li class=""><a href="/forms/form-elements/" class="">Form elements</a></li>
+            <li class=""><a href="/forms/input-group/" class="">Input group</a></li>
+            <li class=""><a href="/forms/checkbox/" class="">Checkbox</a></li>
+            <li class=""><a href="/forms/radio/" class="">Radio</a></li>
+            <li class=""><a href="/forms/switch/" class="">Switch</a></li>
+            <li class=""><a href="/forms/mega-option/" class="">Mega option</a></li>
+          </ul>
         </li>
-        <li data-username="Table bootstrap datatable footable" class="nav-item {% if 'basic_tables' in segment %}active{% endif %}">
-          <a href="{% url 'basic_tables' %}" class="nav-link "><span class="pcoded-micon"><i
+        <li data-username="form elements advance component validation masking wizard picker select"
+          class="nav-item pcoded-hasmenu">
+          <a href="#" class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span
+              class="pcoded-mtext">Forms Plugins</span></a>
+          <ul class="pcoded-submenu" style="display: none;">
+            <li class="pcoded-hasmenu"><a href="#" class="">Date</a>
+              <ul class="pcoded-submenu" style="display: none;">
+                <li><a href="/forms/datepicker/">Datepicker</a></li>
+                <li><a href="/forms/date-range-picker/">Date Range Picker</a></li>
+                <li><a href="/forms/timepicker/">Timepicker</a></li>
+              </ul>
+            </li>
+            <li class="pcoded-hasmenu"><a href="#" class="">Select</a>
+              <ul class="pcoded-submenu" style="display: none;">
+                <!-- <li><a href="../forms/form2_select.html">Select</a></li> -->
+                <li><a href="/forms/choices/">Choices js</a></li>
+                <!-- <li><a href="../forms/form2_select2.html">Select2</a></li> -->
+                <!-- <li><a href="../forms/form2_multipleselectsplitter.html">Multiple Select Splitter</a></li> -->
+              </ul>
+            </li>
+            <li class=""><a href="/forms/google-recaptcha/">Google reCaptcha</a></li>
+            <li class=""><a href="/forms/input-mask/">Input Masks</a></li>
+            <!-- <li class=""><a href="../forms/form2_rangeslider.html">Range Slider</a></li> -->
+            <li class=""><a href="/forms/clipboard/">Clipboard</a></li>
+            <li class=""><a href="/forms/nouislider/">Nouislider</a></li>
+            <!-- <li class=""><a href="../forms/form2_repeater.html">Repeater</a></li> -->
+            <li class=""><a href="/forms/bootstrap-switch/">Switchjs</a></li>
+            <li class=""><a href="/forms/typeahead/">Typeahead</a></li>
+            <!-- <li class=""><a href="../forms/form2_touchspin.html">Touchspin</a></li> -->
+            <!-- <li class=""><a href="../forms/form2_maxlength.html">Maxlength</a></li> -->
+          </ul>
+        </li>
+        <li data-username="form elements advance component validation masking wizard picker select"
+          class="nav-item pcoded-hasmenu">
+          <a href="#" class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span
+              class="pcoded-mtext">Text Editors</span></a>
+          <ul class="pcoded-submenu" style="display: none;">
+            <li><a href="/forms/tinymce/">Tinymce</a></li>
+            <li><a href="/forms/quill/">Quill</a></li>
+            <li class="pcoded-hasmenu"><a href="#">CK editor</a>
+              <ul class="pcoded-submenu" style="display: none;">
+                <li><a href="/forms/classic-editor/">Classic</a></li>
+                <li><a href="/forms/document-editor/">Document</a></li>
+                <li><a href="/forms/inline-editor/">Inline</a></li>
+                <li><a href="/forms/balloon-editor/">Balloon</a></li>
+              </ul>
+            </li>
+            <!-- <li><a href="../forms/editor-trumbowyg.html">Trumbowyg editor</a></li> -->
+            <li><a href="/forms/bootstrap-markdown/">Markdown</a></li>
+          </ul>
+        </li>
+        <li data-username="form elements advance component validation masking wizard picker select"
+          class="nav-item pcoded-hasmenu">
+          <a href="#" class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span
+              class="pcoded-mtext">Form Layouts</span></a>
+          <ul class="pcoded-submenu" style="display: none;">
+            <li><a href="/forms/default-layout/">Layouts</a></li>
+            <li><a href="/forms/multicolumn-layout/">Multicolumn</a></li>
+            <li><a href="/forms/actionbars-layout/">Actionbars</a></li>
+            <li><a href="/forms/sticky-actionbars-layout/">Sticky Actionbars</a></li>
+          </ul>
+        </li>
+        <li data-username="form elements advance component validation masking wizard picker select"
+          class="nav-item pcoded-hasmenu">
+          <a href="#" class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span
+              class="pcoded-mtext">File upload</span></a>
+          <ul class="pcoded-submenu" style="display: none;">
+            <li><a href="/forms/dropzone/">Dropzone</a></li>
+            <li><a href="/forms/uppy/">Uppy</a></li>
+          </ul>
+        </li>
+        <li data-username="Form Validation" class="nav-item"><a href="/form/validation/" class="nav-link"><span
+              class="pcoded-micon"><i class="feather icon-grid"></i></span><span class="pcoded-mtext">Form
+              Validation</span></a></li>
+        <li data-username="Form image cropper" class="nav-item"><a href="/form/image-cropper/" class="nav-link"><span
+              class="pcoded-micon"><i class="feather icon-scissors"></i></span><span class="pcoded-mtext">Image
+              cropper</span></a></li>
+        <!-- <li data-username="form wizard" class="nav-item pcoded-hasmenu">
+                <a href="#" class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Form Wizard</span></a>
+                <ul class="pcoded-submenu">
+                    <li><a href="../forms/form-wizard.html">Wizard 1</a></li>
+                    <li><a href="../forms/page-wizard2.html">Wizard 2</a></li>
+                    <li><a href="../forms/page-wizard3.html">Wizard 3</a></li>
+                </ul>
+            </li> -->
+        <li class="nav-item pcoded-menu-caption">
+          <label>table</label>
+        </li>
+        <li data-username="Table bootstrap" class="nav-item">
+          <a href="/table/bs-table/" class="nav-link"><span class="pcoded-micon"><i
                 class="feather icon-server"></i></span><span class="pcoded-mtext">Table</span></a>
         </li>
+        <li class="nav-item pcoded-hasmenu">
+          <a href="#" class="nav-link "><span class="pcoded-micon"><i class="feather icon-server"></i></span><span
+              class="pcoded-mtext">Vanilla table</span></a>
+          <ul class="pcoded-submenu" style="display: none;">
+            <li><a href="/tables/basic-table/">Basic initialization</a></li>
+            <li><a href="/tables/dynamic-import/">Dynamic Import</a></li>
+            <li><a href="/tables/render-column-cells/">Render Column Cells</a></li>
+            <li><a href="/tables/column-manipulation/">Column Manipulation</a></li>
+            <li><a href="/tables/datetime-sorting/">Datetime Sorting</a></li>
+            <li><a href="/tables/methods/">Methods</a></li>
+            <li><a href="/tables/add-rows/">Add Rows</a></li>
+            <li><a href="/tables/fetch-api/">Fetch API</a></li>
+            <li><a href="/tables/filters/">Filters</a></li>
+            <li><a href="/tables/export/">Export</a></li>
+          </ul>
+        </li>
+        <li class="nav-item pcoded-hasmenu">
+          <a href="#" class="nav-link "><span class="pcoded-micon"><i class="feather icon-server"></i></span><span
+              class="pcoded-mtext">Data table</span></a>
+          <ul class="pcoded-submenu" style="display: none;">
+            <li><a href="/data-tables/basic-table/">Basic initialization</a></li>
+            <li><a href="/data-tables/advance-table/">Advance initialization</a></li>
+            <li><a href="/data-tables/styling-table/">Styling</a></li>
+            <li><a href="/data-tables/api-initialization/">API</a></li>
+            <li><a href="/data-tables/plugin-initialization/">Plug-in</a></li>
+            <li><a href="/data-tables/data-sources/">Data sources</a></li>
+          </ul>
+        </li>
+        <li class="nav-item pcoded-hasmenu">
+          <a href="#" class="nav-link "><span class="pcoded-micon"><i class="feather icon-server"></i></span><span
+              class="pcoded-mtext">DT extensions</span></a>
+          <ul class="pcoded-submenu" style="display: none;">
+            <li><a href="/data-tables/autofill/">Autofill</a></li>
+            <li class="pcoded-hasmenu">
+              <a href="#">Button</a>
+              <ul class="pcoded-submenu" style="display: none;">
+                <li><a href="/data-tables/basic-button/">Basic button</a></li>
+                <li><a href="/data-tables/data-export/">Data export</a></li>
+              </ul>
+            </li>
+            <li><a href="/data-tables/column-reorder/">Col reorder</a></li>
+            <li><a href="/data-tables/fixed-column/">Fixed columns</a></li>
+            <li><a href="/data-tables/fixed-header/">Fixed header</a></li>
+            <li><a href="/data-tables/key-table/">Key table</a></li>
+            <li><a href="/data-tables/responsive/">Responsive</a></li>
+            <li><a href="/data-tables/row-reorder/">Row reorder</a></li>
+            <li><a href="/data-tables/scroller/">Scroller</a></li>
+            <li><a href="/data-tables/select-table/">Select table</a></li>
+          </ul>
+        </li>
         <li class="nav-item pcoded-menu-caption">
-          <label>Chart & Maps</label>
+          <label>Chart &amp; Maps</label>
         </li>
-        <li data-username="Charts Morris" class="nav-item {% if 'morris_chart' in segment %}active{% endif %}"><a href="{% url 'morris_chart' %}" class="nav-link "><span
-              class="pcoded-micon"><i class="feather icon-pie-chart"></i></span><span
+        <li data-username="Charts AM Chart js Echart Google Highchart Knob Morris Nvd3 Peity Radial"
+          class="nav-item pcoded-hasmenu">
+          <a href="#" class="nav-link"><span class="pcoded-micon"><i class="feather icon-pie-chart"></i></span><span
               class="pcoded-mtext">Chart</span></a>
+          <ul class="pcoded-submenu" style="display: none;">
+            <li><a href="/charts/amchart-4/">amChart 4</a></li>
+            <li><a href="/charts/chartjs/">Chart js</a></li>
+            <!-- <li><a href="../chart-maps/chart-echart.html">Echart</a></li> -->
+            <li><a href="/charts/google-chart/">Google</a></li>
+            <li><a href="/charts/highchart/">Highchart</a></li>
+            <!-- <li><a href="../chart-maps/chart-knob.html">Knob</a></li> -->
+            <!-- <li><a href="../chart-maps/chart-morris.html">Morris</a></li> -->
+            <!-- <li><a href="../chart-maps/chart-nvd3.html">Nvd3</a></li> -->
+            <!-- <li><a href="../chart-maps/chart-peity.html">Peity</a></li> -->
+            <li><a href="/charts/radial/">Radial</a></li>
+          </ul>
         </li>
-        <li data-username="Maps Google" class="nav-item {% if 'google_maps' in segment %}active{% endif %}"><a href="{% url 'google_maps' %}" class="nav-link "><span
-              class="pcoded-micon"><i class="feather icon-map"></i></span><span class="pcoded-mtext">Maps</span></a>
+        <li data-username="Maps Google Vector Google Map Search API Location" class="nav-item pcoded-hasmenu">
+          <a href="#" class="nav-link"><span class="pcoded-micon"><i class="feather icon-map"></i></span><span
+              class="pcoded-mtext">Maps</span></a>
+          <ul class="pcoded-submenu" style="display: none;">
+            <li><a href="/maps/google-maps/">Google</a></li>
+            <li><a href="/maps/vector-maps/">Vector</a></li>
+            <li><a href="/maps/map-api/">Gmap search API</a></li>
+            <li><a href="/maps/location-maps/">Location</a></li>
+          </ul>
         </li>
         <li class="nav-item pcoded-menu-caption">
           <label>Pages</label>
         </li>
+        <li data-username="landing page" class="nav-item"><a href="/landing-page/" class="nav-link"><span
+              class="pcoded-micon"><i class="feather icon-navigation-2"></i></span><span class="pcoded-mtext">Landing
+              page</span></a></li>
         <li
           data-username="Authentication Sign up Sign in reset password Change password Personal information profile settings map form subscribe"
           class="nav-item pcoded-hasmenu">
-          <a href="javascript:" class="nav-link "><span class="pcoded-micon"><i
-                class="feather icon-lock"></i></span><span class="pcoded-mtext">Authentication</span></a>
-          <ul class="pcoded-submenu">
-            <li class=""><a href="{% url 'register' %}" class="" target="_blank">Sign up</a></li>
-            <li class=""><a href="{% url 'login' %}" class="" target="_blank">Sign in</a></li>
+          <a href="#" class="nav-link"><span class="pcoded-micon"><i class="feather icon-lock"></i></span><span
+              class="pcoded-mtext">Authentication</span><span class="pcoded-badge label label-danger">New</span></a>
+          <ul class="pcoded-submenu" style="display: none;">
+            <li><a href="/accounts/register-v1/" target="_blank">Sign up</a></li>
+            <li><a href="/accounts/register-v2/" target="_blank">Sign up v2<span
+                  class="pcoded-badge label label-primary">New</span></a></li>
+            <li><a href="/accounts/register-v3/" target="_blank">Sign up v3<span
+                  class="pcoded-badge label label-primary">New</span></a></li>
+            <li><a href="/accounts/register-v4/" target="_blank">Sign up v4<span
+                  class="pcoded-badge label label-primary">New</span></a></li>
+            <li><a href="/accounts/register-v5/" target="_blank">Sign up v5<span
+                  class="pcoded-badge label label-primary">New</span></a></li>
+            <li><a href="/accounts/login-v1/" target="_blank">Sign in</a></li>
+            <li><a href="/accounts/login-v2/" target="_blank">Sign in v2<span
+                  class="pcoded-badge label label-primary">New</span></a></li>
+            <li><a href="/accounts/login-v3/" target="_blank">Sign in v3<span
+                  class="pcoded-badge label label-primary">New</span></a></li>
+            <li><a href="/accounts/login-v4/" target="_blank">Sign in v4<span
+                  class="pcoded-badge label label-primary">New</span></a></li>
+            <li><a href="/accounts/login-v5/" target="_blank">Sign in v5<span
+                  class="pcoded-badge label label-primary">New</span></a></li>
+            <li><a href="/accounts/password-reset-v1/" target="_blank">Reset password</a></li>
+            <li><a href="/accounts/password-reset-v2/" target="_blank">Reset password v2<span
+                  class="pcoded-badge label label-primary">New</span></a></li>
+            <li><a href="/accounts/password-reset-v3/" target="_blank">Reset password v3<span
+                  class="pcoded-badge label label-primary">New</span></a></li>
+            <li><a href="/accounts/password-reset-v4/" target="_blank">Reset password v4<span
+                  class="pcoded-badge label label-primary">New</span></a></li>
+            <li><a href="/accounts/password-reset-v5/" target="_blank">Reset password v5<span
+                  class="pcoded-badge label label-primary">New</span></a></li>
+            <li><a href="/accounts/change-password/">Change password</a></li>
+            <li><a href="/accounts/personal-information/" target="_blank">Personal information</a></li>
+            <li><a href="/accounts/profile-settings/" target="_blank">Profile settings</a></li>
+            <li><a href="/accounts/map-form/" target="_blank">Map form</a></li>
+            <li><a href="/accounts/subscribe-form/" target="_blank">Subscribe</a></li>
           </ul>
         </li>
-        <li data-username="Profile Page" class="nav-item {% if 'profile' in segment %}active{% endif %}"><a href="{% url 'profile' %}" class="nav-link"><span
-              class="pcoded-micon"><i class="feather icon-user"></i></span><span class="pcoded-mtext">Profile
-              Page</span></a>
+        <li data-username="Maintenance Error Comming soon offline ui" class="nav-item pcoded-hasmenu">
+          <a href="#" class="nav-link"><span class="pcoded-micon"><i class="feather icon-sliders"></i></span><span
+              class="pcoded-mtext">Maintenance</span></a>
+          <ul class="pcoded-submenu" style="display: none;">
+            <li><a href="/maint/error/" target="_blank">Error</a></li>
+            <li><a href="/maint/coming-soon/" target="_blank">Maintenance</a></li>
+            <li><a href="/maint/offile/" target="_blank">Offline UI</a></li>
+          </ul>
         </li>
-        <li data-username="Sample Page" class="nav-item {% if 'sample_page' in segment %}active{% endif %}"><a href="{% url 'sample_page' %}" class="nav-link"><span
-              class="pcoded-micon"><i class="feather icon-sidebar"></i></span><span class="pcoded-mtext">Sample
-              page</span></a>
+        <li class="nav-item pcoded-menu-caption">
+          <label>App</label>
         </li>
-        <li data-username="Disabled Menu" class="nav-item disabled"><a href="javascript:" class="nav-link"><span
+        <li data-username="message" class="nav-item"><a href="/social/message/" class="nav-link"><span
+              class="pcoded-micon"><i class="feather icon-message-circle"></i></span><span
+              class="pcoded-mtext">Message</span></a></li>
+        <li data-username="Task list board details" class="nav-item pcoded-hasmenu">
+          <a href="#" class="nav-link"><span class="pcoded-micon"><i class="feather icon-clipboard"></i></span><span
+              class="pcoded-mtext">Task</span></a>
+          <ul class="pcoded-submenu" style="display: none;">
+            <li><a href="/task/task-list/">List</a></li>
+            <li><a href="/task/task-board/">Board</a></li>
+            <li><a href="/task/task-details/">Detail</a></li>
+          </ul>
+        </li>
+        <li data-username="To-Do notes" class="nav-item pcoded-hasmenu">
+          <a href="#" class="nav-link"><span class="pcoded-micon"><i class="feather icon-check-square"></i></span><span
+              class="pcoded-mtext">To-Do</span></a>
+          <ul class="pcoded-submenu" style="display: none;">
+            <li><a href="/todo/">To-Do</a></li>
+            <!-- <li><a href="../apps/notes.html">Notes</a></li> -->
+          </ul>
+        </li>
+        <li data-username="Gallery Grid Masonry Advance" class="nav-item pcoded-hasmenu">
+          <a href="#" class="nav-link"><span class="pcoded-micon"><i class="feather icon-image"></i></span><span
+              class="pcoded-mtext">Gallery</span></a>
+          <ul class="pcoded-submenu" style="display: none;">
+            <li><a href="/gallery/grid/">Grid</a></li>
+            <li><a href="/gallery/masonry">Masonry</a></li>
+            <li><a href="/gallery/advance">Advance</a></li>
+          </ul>
+        </li>
+        <li class="nav-item pcoded-menu-caption">
+          <label>Extension</label>
+        </li>
+        <li data-username="Invoice Summury List" class="nav-item pcoded-hasmenu">
+          <a href="#" class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-minus"></i></span><span
+              class="pcoded-mtext">Invoice</span></a>
+          <ul class="pcoded-submenu" style="display: none;">
+            <li><a href="/extension/invoice/">Invoice</a></li>
+            <li><a href="/extension/invoice-summary/">Invoice summary</a></li>
+            <li><a href="/extension/invoice-list/">Invoice list</a></li>
+          </ul>
+        </li>
+        <li data-username="Full Calendar" class="nav-item"><a href="/extension/full-calendar/" class="nav-link"><span
+              class="pcoded-micon"><i class="feather icon-calendar"></i></span><span class="pcoded-mtext">Full
+              calendar</span></a></li>
+        <li class="nav-item pcoded-menu-caption">
+          <label>Other</label>
+        </li>
+        <li data-username="Menu levels Menu level 2.1 Menu level 2.2" class="nav-item pcoded-hasmenu">
+          <a href="#" class="nav-link"><span class="pcoded-micon"><i class="feather icon-menu"></i></span><span
+              class="pcoded-mtext">Menu levels</span></a>
+          <ul class="pcoded-submenu" style="display: none;">
+            <li><a href="">Menu Level 2.1</a></li>
+            <li class="pcoded-hasmenu">
+              <a href="#">Menu level 2.2</a>
+              <ul class="pcoded-submenu" style="display: none;">
+                <li><a href="">Menu level 3.1</a></li>
+                <li><a href="">Menu level 3.2</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li data-username="Disabled Menu" class="nav-item disabled"><a href="#" class="nav-link"><span
               class="pcoded-micon"><i class="feather icon-power"></i></span><span class="pcoded-mtext">Disabled
-              menu</span></a>
+              menu</span></a></li>
+        <li data-username="Sample Page" class="nav-item"><a href="/extra/sample-page/" class="nav-link"><span
+              class="pcoded-micon"><i class="feather icon-sidebar"></i></span><span class="pcoded-mtext">Sample
+              page</span></a></li>
+
+        <li class="nav-item pcoded-menu-caption">
+          <label>Resources</label>
         </li>
-        {% endif %}
+        <li data-username="Need Support" class="nav-item">
+          <a href="https://appseed.us/product/datta-able-pro/django/" class="nav-link" target="_blank">
+            <span class="pcoded-micon">
+              <i class="feather icon-download"></i>
+            </span>
+            <span class="pcoded-mtext">Download</span></a>
+        </li>
+        <li data-username="Need Support" class="nav-item">
+          <a href="https://appseed.us/support/" class="nav-link" target="_blank">
+            <span class="pcoded-micon">
+              <i class="feather icon-help-circle"></i>
+            </span>
+            <span class="pcoded-mtext">Suport</span></a>
+        </li>
       </ul>
+      <div class="ps__rail-x" style="left: 0px; bottom: -1686px;">
+        <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+      </div>
+      <div class="ps__rail-y" style="top: 1686px; height: 719px; right: 0px;">
+        <div class="ps__thumb-y" tabindex="0" style="top: 505px; height: 214px;"></div>
+      </div>
     </div>
   </div>
 </nav>
